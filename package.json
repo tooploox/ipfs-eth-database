@@ -1,0 +1,14 @@
+{
+  "name": "ipfs-eth-database",
+  "version": "0.0.1",
+  "dependencies": {
+    "truffle": "^4.1.11"
+  },
+  "devDependencies": {
+    "solium": "^1.1.7"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "lint": "solium -d ."
+  }
+}
