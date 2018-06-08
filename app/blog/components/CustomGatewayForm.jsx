@@ -11,6 +11,7 @@ export class CustomGatewayForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(event) {
     this.props.onSubmit(this.state.address);
     event.preventDefault();
