@@ -1,7 +1,7 @@
 pragma solidity 0.4.24;
 
-import "./usingOraclize.sol";
-import "./strings.sol";
+import "./lib/usingOraclize.sol";
+import "./lib/strings.sol";
 
 
 contract Blog is usingOraclize {
@@ -12,6 +12,7 @@ contract Blog is usingOraclize {
   mapping(bytes32 => address) public authorByHash;
 
   event PostAdded(address indexed author, string hash, uint timestamp, string title);
+  event PostSubmitted(address indexed author, string hash, bytes32 queryId);
 
   constructor() public payable {
   }
@@ -30,6 +31,7 @@ contract Blog is usingOraclize {
     bytes32 queryId = oraclize_query("IPFS", "json(".toSlice().concat(_hash.toSlice()).toSlice().concat(").title".toSlice()));
     authorByHash[keccak256(_hash)] = msg.sender;
     hashByQueryId[queryId] = _hash;
+    emit PostSubmitted(msg.sender, _hash, queryId);
     return true;
   }
 }
