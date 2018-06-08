@@ -5,6 +5,7 @@
     "babel-preset-env": "^1.7.0",
     "date-fns": "^2.0.0-alpha.10",
     "marked": "^0.4.0",
+    "openzeppelin-solidity": "1.10.0",
     "preact": "^8.2.9",
     "preact-compat": "^3.18.0",
     "react-router-dom": "^4.3.1",

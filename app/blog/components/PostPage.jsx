@@ -42,7 +42,6 @@ export class PostPage extends React.Component {
       <div>
         <article>
           <h1><Link to={`/u/${author}/${hash}`}>{post.title}</Link></h1>
-          Date: {format(new Date(post.timestamp * 1000), "HH:mm YYYY-MM-dd")}{" | "}
           Author: <Link to={`/u/${author}`}>{author}</Link>
           <div dangerouslySetInnerHTML={{ __html: marked(post.content) }}></div>
         </article>
