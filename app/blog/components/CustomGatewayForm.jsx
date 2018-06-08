@@ -1,6 +1,6 @@
 import React from "react";
 
-export class CustomIpfsAddressForm extends React.Component {
+export class CustomGatewayForm extends React.Component {
   constructor(props) {
     super(props);
 

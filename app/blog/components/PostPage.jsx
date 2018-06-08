@@ -2,7 +2,7 @@ import React from "react";
 import marked from "marked";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { CustomIpfsAddressForm } from "./CustomIpfsAddressForm";
+import { CustomGatewayForm } from "./CustomGatewayForm";
 
 const gateways = [
   "http://54.93.56.226:8080/ipfs",
@@ -33,7 +33,7 @@ export class PostPage extends React.Component {
 
     this.state = {
       post: null,
-      inputVisible: false,
+      customGatewayFormVisible: false,
     };
 
     this.handleConnectCustomAddress = this.handleConnectCustomAddress.bind(this);
@@ -55,7 +55,7 @@ export class PostPage extends React.Component {
            .then(response => {
              response
                .json()
-               .then(post => this.setState({ post: post, inputVisible: false }))
+               .then(post => this.setState({ post: post, customGatewayFormVisible: false }))
            })
   }
 
@@ -68,7 +68,7 @@ export class PostPage extends React.Component {
   }
 
   showAddressInput() {
-    this.setState({ inputVisible: true })
+    this.setState({ customGatewayFormVisible: true })
   }
 
   handleConnectCustomAddress(address) {
@@ -76,12 +76,12 @@ export class PostPage extends React.Component {
   }
 
   render() {
-    const { post, inputVisible } = this.state;
+    const { post, customGatewayFormVisible } = this.state;
     const { author, hash } = this.props.match.params;
 
-    if (inputVisible) {
+    if (customGatewayFormVisible) {
       return (
-        <CustomIpfsAddressForm onSubmit={this.handleConnectCustomAddress}/>
+        <CustomGatewayForm onSubmit={this.handleConnectCustomAddress}/>
       );
     }
 
