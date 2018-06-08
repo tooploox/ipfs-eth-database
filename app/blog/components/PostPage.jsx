@@ -63,11 +63,11 @@ export class PostPage extends React.Component {
     if(gateways.length > gatewayIndex + 1) {
       this.getPost(gatewayIndex + 1)
     } else {
-      this.showAddressInput()
+      this.showCustomGatewayForm()
     }
   }
 
-  showAddressInput() {
+  showCustomGatewayForm() {
     this.setState({ customGatewayFormVisible: true })
   }
 
