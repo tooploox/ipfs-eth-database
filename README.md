@@ -78,10 +78,14 @@ You should be able to read the files by `ipfs cat` command or by a public gatewa
 
 ```bash
 ipfs cat QmU2yr8CQfrd26Yghjx2xGdg8ZdmRKRSwcD7eBgpvL91xf
+
+{"title":"Title of the first post", "content": "This is the awesome content!"}
 ```
 
 ```bash
 curl http://ipfs.io/ipfs/QmU2yr8CQfrd26Yghjx2xGdg8ZdmRKRSwcD7eBgpvL91xf
+
+{"title":"Title of the first post", "content": "This is the awesome content!"}
 ```
 
 Keep the hashes for the next step.
