@@ -17,7 +17,7 @@ const fileAddress = process.argv.slice(2)[0];
 
 function onConfirmation(confirmation) {
   console.log("Confirmation:" + confirmation);
-  if(confirmation >= 30) {
+  if(confirmation >= 15) {
     console.log("The post is available in your blog:");
     console.log("http://localhost:1234/#/u/" + address);
     process.exit();
