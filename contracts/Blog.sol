@@ -56,4 +56,8 @@ contract Blog is usingOraclize, Ownable {
     emit PostSubmitted(msg.sender, _hash, queryId);
     return true;
   }
+
+  function getPriceOfAddingPost() public view returns (uint) {
+    return oraclize_getPrice("IPFS");
+  }
 }
