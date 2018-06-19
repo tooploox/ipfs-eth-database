@@ -1,4 +1,4 @@
-# ETH/IPFS Blog system
+# IPFS in Ethereum Smart Contracts
 
 This is a simple blog application that is a proof of concept of connecting Ethereum's smart contracts to JSON database stored on IPFS. The communication is based on [Oraclize](http://oraclize.it) service.  
 
