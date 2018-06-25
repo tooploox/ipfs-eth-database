@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { CustomGatewayForm } from "./CustomGatewayForm";
 
 const gateways = [
-  "http://54.93.56.226:8080/ipfs",
   "https://ipfs.io/ipfs",
   "https://gateway.ipfs.io/ipfs",
   "https://ipfs.infura.io/ipfs",
@@ -26,7 +25,6 @@ const gateways = [
   "https://ipfs.renehsz.com/ipfs",
 ];
 
-
 export class PostPage extends React.Component {
   constructor(props) {
     super(props);
@@ -44,31 +42,32 @@ export class PostPage extends React.Component {
   }
 
   getPost(gatewayIndex = 0) {
-    this.fetchPostFromIpfs(gateways[gatewayIndex])
+    return this.fetchPostFromIpfs(gateways[gatewayIndex])
       .catch(() => this.retry(gatewayIndex))
   }
 
   fetchPostFromIpfs(gateway) {
     const { hash } = this.props.match.params;
 
+    if (window.ipfs) {
+      return ipfs.cat(hash).then(post => this.setState({ post: JSON.parse(post) }));
+    }
+
     return fetch(`${gateway}/${hash}`)
-           .then(response => {
-             response
-               .json()
-               .then(post => this.setState({ post: post, customGatewayFormVisible: false }))
-           })
+      .then(response => response.json())
+      .then(post => this.setState({ post, customGatewayFormVisible: false }));
   }
 
   retry(gatewayIndex) {
     if(gateways.length > gatewayIndex + 1) {
-      this.getPost(gatewayIndex + 1)
+      this.getPost(gatewayIndex + 1);
     } else {
-      this.showCustomGatewayForm()
+      this.showCustomGatewayForm();
     }
   }
 
   showCustomGatewayForm() {
-    this.setState({ customGatewayFormVisible: true })
+    this.setState({ customGatewayFormVisible: true });
   }
 
   handleConnectCustomAddress(address) {

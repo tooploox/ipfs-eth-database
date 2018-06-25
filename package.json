@@ -19,6 +19,7 @@
     "solium": "^1.1.7"
   },
   "scripts": {
+    "start": "parcel app/index.html",
     "test": "truffle test",
     "lint": "solium -d ."
   },
